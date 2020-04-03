@@ -12,7 +12,24 @@ class SyncClient(builder: SyncClientBuilder) {
   private[sync] implicit val formats = DefaultFormats
 
   def getCurrentWeatherData(cityName: String): Option[CurrentWeatherData] = {
-    val request = basicRequest.post(uri"$apiUrl/weather?q=$cityName&appid=$apiKey")
+    this.getResponse(s"$apiUrl/weather?q=$cityName&appid=$apiKey")
+
+  }
+
+  def getCurrentWeatherData(cityId: Long): Option[CurrentWeatherData] = {
+    this.getResponse(s"$apiUrl/weather?id=$cityId&appid=$apiKey")
+  }
+
+  def getCurrentWeatherData(lat: Double, lng: Double): Option[CurrentWeatherData] = {
+    this.getResponse(s"$apiUrl/weather?lat=$lat&lon=$lng&appid=$apiKey")
+  }
+
+  def getCurrentWeatherData(zipCode: Long, countryCode: String): Option[CurrentWeatherData] = {
+    this.getResponse(s"$apiUrl/weather?zip=$zipCode,$countryCode&appid=$apiKey")
+  }
+
+  private[this] def getResponse(uri: String): Option[CurrentWeatherData] = {
+    val request = basicRequest.post(uri"$uri")
     val response = request.send()
     val body = response.body match {
       case Right(x) => Some(parse(x).extract[CurrentWeatherData])
