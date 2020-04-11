@@ -1,5 +1,5 @@
 # ScalaOpenWeatherMap
-A Scala wrapper to OpenWeatherMap API using sttp library. Provides both Synchronous and Asynchronous(TODO) clients.
+A Scala wrapper to OpenWeatherMap API using sttp library. Provides both Synchronous and Asynchronous clients.
 # Installation
 The ScalaOpenWeatherMap package can be added using SBT. Use the following code to do so:
 ```scala

@@ -16,7 +16,7 @@ class SyncClient(builder: ClientBuilder) extends Client {
     val response = request.send()
     val body = response.body match {
       case Right(x) => Some(parse(x).extract[A])
-      case Left(x) => None
+      case Left(x) => throw new Exception(x)
     }
     body
   }
