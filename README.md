@@ -9,7 +9,7 @@ Remember to change the "1.0.0" with the latest version. This can be found using 
 # Usage
 Before making requests, make sure you have the OpenWeatherMap API key generated. Without it, making requests is not possible. Import either Sync or Async(TODO) client into your application, and make a simple request:
 ```scala
-import scalaopenweathermap.client.sync.{SyncClient, SyncClientFacade}
+
 
 val apiKey = "myOpenWeatherMapApiKey"
 val client: SyncClient = SyncClientFacade.getSyncClient(apiKey)
