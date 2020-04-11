@@ -3,18 +3,23 @@ A Scala wrapper to OpenWeatherMap API using sttp library. Provides both Synchron
 # Installation
 The ScalaOpenWeatherMap package can be added using SBT. Use the following code to do so:
 ```scala
-"com.bartoszgajda.scalaopenweathermap" %% "scalaopenweathermap" % "1.0.0"
+"com.bartoszgajda.scalaopenweathermap" %% "scalaopenweathermap" % "1.1.0"
 ```
 Remember to change the "1.0.0" with the latest version. This can be found using following [link](https://search.maven.org/search?q=com.bartoszgajda)
 # Usage
-Before making requests, make sure you have the OpenWeatherMap API key generated. Without it, making requests is not possible. Import either Sync or Async(TODO) client into your application, and make a simple request:
+Before making requests, make sure you have the OpenWeatherMap API key generated. Without it, making requests is not possible. Import either Sync or Async client into your application, and make a simple request:
 ```scala
 
 
-val apiKey = "myOpenWeatherMapApiKey"
-val client: SyncClient = SyncClientFacade.getSyncClient(apiKey)
-val currentWeatherData = client.getCurrentWeatherData("London")
+// Option 1 - Synchronous Client
+val syncClient: SyncClient = ClientFacade.getSyncClient(apiKey)
+// Option 2 - Asynchronous Client
+val asyncClient: AsyncClient = ClientFacade.getAsyncClient(apiKey)
+
+val currentWeather = new CurrentWeather(syncClient) // or asyncClient
+val currentWeatherData = currentWeather.getCurrentWeatherData("London")
 println(currentWeatherData)
+
 
 // Example output:
 // Some(CurrentWeatherData(Coord(-0.13,51.51),List(Weather(803,Clouds,broken clouds,04n)),stations,
