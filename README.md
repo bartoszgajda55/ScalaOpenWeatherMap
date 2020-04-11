@@ -5,7 +5,7 @@ The ScalaOpenWeatherMap package can be added using SBT. Use the following code t
 ```scala
 "com.bartoszgajda.scalaopenweathermap" %% "scalaopenweathermap" % "1.1.0"
 ```
-Remember to change the "1.0.0" with the latest version. This can be found using following [link](https://search.maven.org/search?q=com.bartoszgajda)
+Remember to change the "1.1.0" with the latest version. This can be found using following [link](https://search.maven.org/search?q=com.bartoszgajda)
 # Usage
 Before making requests, make sure you have the OpenWeatherMap API key generated. Without it, making requests is not possible. Import either Sync or Async client into your application, and make a simple request:
 ```scala
