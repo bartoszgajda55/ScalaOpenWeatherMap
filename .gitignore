@@ -12,3 +12,5 @@ project/plugins/project/
 .lib/
 .env
 .idea/
+.bloop/
+.metals/
